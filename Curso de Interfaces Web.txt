@@ -1,0 +1,4 @@
+[09:50, 10/06/2026] Angela Colega Do Senac: interface negativa - GOV redirecionando para vários sites tanto para login quanto para acessar vários conteúdos. difícil de localizar os conteúdos que o usuário precisa.
+
+interface positiva - Netflix plataforma intuitiva, boa responsividade, conteúdos para qualquer idade adaptando o site para elas.
+[09:50, 10/06/2026] Angela Colega Do Senac: No corpo do site organizar melhor o links mostrando o que é sem precisar clicar nele pra descobrir o fundo alterar pra deixar ele mais limpo podendo até utilizar o azul do site utilizando um azul escuro -  trocar as fontes para fontes padrão - trocar os ícones - site sem logo/sem flaticon - criar um header onde iria o nome do site, , campo de busca, contato, home e produtos e também tirar o gif do titulo pq está poluindo visualmente - precisa de responsividade - o footer com uma cor diferente, padronizar o tamanho da fonte e a cor dele
