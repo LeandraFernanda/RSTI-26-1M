@@ -1,0 +1,11 @@
+Instagram 
+
+1. Visibilidade do status esta bom; tem alguns vídeos que vi que começou e parou do nada de continuar;
+2. eu tenho limite de seguir os perfis;
+3. no campo de comentários, tem os 3 pontos que nele consta excluir ou cancelar o que digitou;
+4. Os botões estão ok;
+5. tem a confirmação de excluir
+6. o instagram tem sugestão de pesquisa
+7. code, fiz o copia e cola para o instagram e deu certo
+8. A barra de pesquisa com o ícone esta visível
+9. Se digito a senha errada, aparece um aviso que digitei senha errada
