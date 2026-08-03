@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="Spotify.png" type="image/x-icon">
+  <title>Spotify - Login</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <div class="container">
+    <!-- Logo Spotify -->
+    <div class="spotify-logo" aria-label="Spotify">
+      <svg viewBox="0 0 24 24" fill="#1ed760">
+        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.28c-.24.36-.72.48-1.08.24-2.88-1.8-6.6-2.16-10.92-1.2-.42.12-.84-.12-.96-.48-.12-.36.12-.84.48-.96 4.68-1.08 8.88-.72 12.12 1.32.36.24.48.72.24 1.08zm1.44-3.24c-.24.36-.72.48-1.08.24-3.36-2.04-8.4-2.64-12.36-1.44-.48.12-.96-.12-1.08-.6-.12-.48.12-.96.6-1.08 4.44-1.32 9.96-.72 13.8 1.56.36.24.48.72.12 1.08zm.12-3.36C15.6 9.72 8.4 9.36 4.8 10.56c-.6.24-1.2-.12-1.32-.72-.24-.6.12-1.2.72-1.32 4.2-1.44 12.12-1.08 16.32 1.08.48.24.72.84.48 1.32-.24.48-.84.72-1.32.48z"/>
+      </svg>
+    </div>
+
+    <p>Olá de novo</p>
+
+    <!-- Formulário -->
+    <form id="access-form" novalidate style="width:100%;">
+      <div class="form-group">
+        <label for="access-email">E-mail</label>
+        <input id="access-email" type="email" placeholder="seu@email.com" autocomplete="email">
+      </div>
+      <button type="submit" class="btn-primary">Continuar</button>
+    </form>
+    <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-text">ou</span>
+      <span class="divider-line"></span>
+    </div>
+
+    <!-- Botões de provedor -->
+    <div class="provider-buttons">
+      <button class="btn-provider" data-demo-action>
+        <span class="icon icon-phone">📱</span>
+        Continuar com um número de telefone
+      </button>
+      <button class="btn-provider" data-demo-action>
+        <span class="icon" style="color:#4285f4;">G</span>
+        Continuar com o Google
+      </button>
+      <button class="btn-provider" data-demo-action>
+        <span class="icon" style="color:#1877f2;">f</span>
+        Continuar com o Facebook
+      </button>
+      <button class="btn-provider" data-demo-action>
+        <span class="icon" style="font-size:20px;"></span>
+        Continuar com a Apple
+      </button>
+    </div>
+
+    <!-- Status -->
+    <div id="demo-status" class="status-message" role="status" aria-live="polite"></div>
+
+    <!-- Inscrever-se -->
+    <div class="signup-section">
+      <p>Não tem uma conta? <a href="#" id="signup-link" data-demo-action>Inscrever-se</a></p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-note">
+      <p>&copy; 2026 todos os direitos reservados</p>
+      <a href="#">Política de Privacidade</a> e aos <a href="#">termos de acesso</a> ao Google.
+    </div>
+     <div class="menu">
+  <div class="toggle">
+    <ion-icon name="share-social"></ion-icon>
+  </div>
+  <li style="--i: 0; --clr: #1877f2">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+  </li>
+  <li style="--i: 1; --clr: #25d366">
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+  </li>
+  <li style="--i: 2; --clr: #1b1e21">
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </li>
+  <li style="--i: 3; --clr: #ff5733">
+    <a href="#"><i class="fab fa-reddit-alien"></i></a>
+  </li>
+  <li style="--i: 4; --clr: #0a66c2">
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </li>
+  <li style="--i: 5; --clr: #c32aa3">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </li>
+  <li style="--i: 6; --clr: #1b1e21">
+    <a href="#"><i class="fab fa-github"></i></a>
+  </li>
+  <li style="--i: 7; --clr: #ff0000">
+    <a href="#"><i class="fab fa-youtube"></i></a>
+  </li>
+</div>
+
+<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
+<script  src="script.js"></script>
+    </div>
+  </div>
+ </body>
+</html>
