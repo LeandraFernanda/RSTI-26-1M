@@ -1,0 +1,31 @@
+:root {
+    --primary-color: #1e1e1e;
+    --secondary-color: #333;
+    --accent-color: blue;
+    --success-color: red;
+    --text-color: white;
+    --background-color: #f1f3f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--dark);
+}
+img{
+    max-width: 100%;
+   
+}

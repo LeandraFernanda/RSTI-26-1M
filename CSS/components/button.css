@@ -1,0 +1,24 @@
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.button {
+    border: none;
+    height: 70px;
+    border-radius: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.button:hover {
+    opacity: 0.85;
+}
+
+.button:active {
+    transform: scale(0.94);
+}
