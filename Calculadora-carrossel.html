@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Calculadora - Carrossel</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+    }
+
+    body {
+      background-color: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* ==================== CARROSSEL ==================== */
+    .carousel {
+      width: 420px;
+      max-width: 100%;
+      overflow: hidden; /* requisito técnico */
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex; /* requisito técnico */
+      width: 200%; /* 2 slides */
+      transition: transform 0.5s ease-in-out; /* requisito técnico */
+      transform: translateX(0); /* requisito técnico */
+    }
+
+    .carousel-track.slide-2 {
+      transform: translateX(-50%);
+    }
+
+    .slide {
+      width: 50%;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ==================== SLIDE 1 - CALCULADORA ==================== */
+    .calculator {
+      width: 400px;
+      max-width: 100%;
+      height: 600px;
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .display-container {
+      background-color: #2d2d2d;
+      border-radius: 15px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 25px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    #display {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 40px;
+      font-weight: bold;
+      text-align: right;
+      letter-spacing: 1px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 6px;
+      flex: 1;
+    }
+
+    button {
+      border: none;
+      border-radius: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffffff;
+      cursor: pointer;
+      transition: filter 0.15s ease, transform 0.05s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button:hover {
+      filter: brightness(1.2);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .number { background-color: #404040; }
+    .operator { background-color: #ff6b35; }
+    .equals { background-color: #4CAF50; }
+    .clear { background-color: #f44336; }
+    .span-two { grid-column: span 2; }
+
+    /* ==================== SLIDE 2 - SOBRE ==================== */
+    .about {
+      width: 400px;
+      max-width: 100%;
+      min-height: 600px;
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      padding: 30px 25px;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+    }
+
+    .about h2 {
+      font-size: 24px;
+      color: #ff6b35;
+      text-align: center;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ff6b35;
+      padding-bottom: 10px;
+    }
+
+    .about-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .about-info .row {
+      background-color: #2d2d2d;
+      padding: 10px 14px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .about-info .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ff6b35;
+      font-weight: bold;
+    }
+
+    .about-info .value {
+      font-size: 15px;
+      color: #ffffff;
+    }
+
+    .about-info a {
+      color: #4CAF50;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .about-info a:hover {
+      text-decoration: underline;
+    }
+
+    .about .description {
+      background-color: #2d2d2d;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #dddddd;
+    }
+
+    /* ==================== NAVEGAÇÃO DO CARROSSEL ==================== */
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      width: 420px;
+      max-width: 100%;
+    }
+
+    .nav-btn {
+      background-color: #ff6b35;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: filter 0.2s ease, transform 0.05s ease;
+      flex: 1;
+    }
+
+    .nav-btn:hover {
+      filter: brightness(1.15);
+    }
+
+    .nav-btn:active {
+      transform: scale(0.97);
+    }
+
+    .nav-btn:disabled {
+      background-color: #444;
+      cursor: not-allowed;
+      opacity: 0.6;
+      filter: none;
+    }
+
+    .indicators {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 14px;
+      width: 420px;
+      max-width: 100%;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #444;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: #ff6b35;
+      transform: scale(1.2);
+    }
+
+    /* Wrapper para centralizar tudo */
+    .app-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="carousel">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- ============ SLIDE 1: CALCULADORA ============ -->
+        <div class="slide">
+          <div class="calculator">
+            <div class="display-container">
+              <input type="text" id="display" value="0" readonly />
+            </div>
+            <div class="buttons" id="buttons">
+              <button class="clear" data-action="clear">C</button>
+              <button class="number" data-action="toggle-sign">±</button>
+              <button class="number" data-action="percent">%</button>
+              <button class="operator" data-action="operator" data-value="/">÷</button>
+
+              <button class="number" data-action="number" data-value="7">7</button>
+              <button class="number" data-action="number" data-value="8">8</button>
+              <button class="number" data-action="number" data-value="9">9</button>
+              <button class="operator" data-action="operator" data-value="*">×</button>
+
+              <button class="number" data-action="number" data-value="4">4</button>
+              <button class="number" data-action="number" data-value="5">5</button>
+              <button class="number" data-action="number" data-value="6">6</button>
+              <button class="operator" data-action="operator" data-value="-">-</button>
+
+              <button class="number" data-action="number" data-value="1">1</button>
+              <button class="number" data-action="number" data-value="2">2</button>
+              <button class="number" data-action="number" data-value="3">3</button>
+              <button class="operator" data-action="operator" data-value="+">+</button>
+
+              <button class="number span-two" data-action="number" data-value="0">0</button>
+              <button class="number" data-action="number" data-value=".">.</button>
+              <button class="equals" data-action="calculate">=</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ SLIDE 2: SOBRE O PROJETO ============ -->
+        <div class="slide">
+          <div class="about">
+            <h2>Sobre o Projeto</h2>
+
+            <div class="about-info">
+              <div class="row">
+                <span class="label">Nome do Projeto</span>
+                <span class="value">Calculadora com Carrossel</span>
+              </div>
+
+              <div class="row">
+                <span class="label">Desenvolvedor front-End</span>
+                <span class="value">Leandra F V F F da Silveira</span>
+              </div>
+
+              <div class="row">
+                <span class="label">Curso</span>
+                <span class="value">Desing de Interfaces Web Front-End</span>
+              </div>
+
+              <div class="row">
+                <span class="label">Turma</span>
+                <span class="value">Turma RSTI- 26-1Manhã</span>
+              </div>
+
+              <div class="row">
+                <span class="label">Unidade Senac São Leopoldo</span>
+                <span class="value">Desenvolvimento Web / Front-End</span>
+              </div>
+
+              <div class="row">
+                <span class="label">Período de Desenvolvimento</span>
+                <span class="value">junho/julho/Agosto/Setembro de 2026</span>
+              </div>
+
+              <div class="row">
+                <span class="label">Repositório</span>
+                <a href="" target="_blank">
+                  github.com//calculadora
+                </a>
+              </div>
+            </div>
+
+            <div class="description">
+              <strong style="color:#ff6b35;">Descrição:</strong><br />
+              Calculadora desenvolvida em HTML, CSS e JavaScript com interface moderna,
+              tema escuro, animações de interação e navegação em carrossel entre a
+              calculadora funcional e as informações do projeto. Aplica conceitos de
+              manipulação do DOM, eventos, classes dinâmicas e transições CSS.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ NAVEGAÇÃO ============ -->
+    <div class="carousel-nav">
+      <button class="nav-btn" id="prevBtn" disabled>← Anterior</button>
+      <button class="nav-btn" id="nextBtn">Próximo →</button>
+    </div>
+
+    <div class="indicators" id="indicators">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================
+       1) LÓGICA DA CALCULADORA
+    ========================================================== */
+    (function () {
+      const display = document.querySelector('#display'); // requisito: querySelector
+      let currentExpression = '';
+
+      function updateDisplay(value) {
+        display.value = value;
+      }
+
+      function addToExpression(value) {
+        const current = display.value;
+        if (current === '0' || current === 'Error') {
+          updateDisplay(value);
+        } else {
+          updateDisplay(current + value);
+        }
+        currentExpression += value;
+      }
+
+      function addOperator(operator) {
+        const current = display.value;
+        if (current && current !== 'Error') {
+          currentExpression += operator;
+          updateDisplay(current + operator);
+        }
+      }
+
+      function clearAll() {
+        updateDisplay('0');
+        currentExpression = '';
+      }
+
+      function toggleSign() {
+        const current = display.value;
+        if (current && current !== '0' && current !== 'Error') {
+          const newValue = current.startsWith('-') ? current.slice(1) : '-' + current;
+          updateDisplay(newValue);
+        }
+      }
+
+      function calculate() {
+        try {
+          let expression = display.value;
+          expression = expression.replace(/×/g, '*').replace(/÷/g, '/');
+
+          if (expression.includes('%')) {
+            const parts = expression.split('%');
+            if (parts.length === 2) {
+              expression = parts[0] + '*0.01';
+            }
+          }
+
+          const result = Function('"use strict";return (' + expression + ')')();
+
+          const formatted = Number.isInteger(result)
+            ? result.toString()
+            : parseFloat(result.toFixed(8)).toString();
+
+          updateDisplay(formatted);
+          currentExpression = formatted;
+        } catch (error) {
+          updateDisplay('Error');
+          currentExpression = '';
+        }
+      }
+
+      // Delegação de eventos no container de botões
+      const buttons = document.querySelector('#buttons');
+      buttons.addEventListener('click', function (e) { // requisito: addEventListener
+        const button = e.target.closest('button');
+        if (!button) return;
+
+        const action = button.dataset.action;
+        const value = button.dataset.value;
+
+        if (action === 'number') addToExpression(value);
+        else if (action === 'operator') addOperator(value);
+        else if (action === 'clear') clearAll();
+        else if (action === 'toggle-sign') toggleSign();
+        else if (action === 'percent') addToExpression('%');
+        else if (action === 'calculate') calculate();
+      });
+
+      // Suporte ao teclado
+      document.addEventListener('keydown', function (e) {
+        const key = e.key;
+        if (/[0-9.]/.test(key)) addToExpression(key);
+        else if (['+', '-', '*', '/'].includes(key)) addOperator(key);
+        else if (key === 'Enter' || key === '=') { e.preventDefault(); calculate(); }
+        else if (key === 'Escape' || key === 'c' || key === 'C') clearAll();
+        else if (key === '%') addToExpression('%');
+      });
+    })();
+
+    /* ==========================================================
+       2) LÓGICA DO CARROSSEL
+    ========================================================== */
+    (function () {
+      // Variável de controle do slide atual
+      let currentSlide = 0;
+      const totalSlides = 2;
+
+      // Seleção dos elementos
+      const track = document.querySelector('#carouselTrack');       // requisito: querySelector
+      const prevBtn = document.querySelector('#prevBtn');
+      const nextBtn = document.querySelector('#nextBtn');
+      const dots = document.querySelectorAll('.dot');               // requisito: querySelectorAll
+
+      // Função que atualiza a interface conforme o slide atual
+      function updateCarousel() {
+        // Move o track usando transform: translateX()
+        if (currentSlide === 0) {
+          track.classList.remove('slide-2');  // requisito: classList.remove
+        } else {
+          track.classList.add('slide-2');     // requisito: classList.add
+        }
+
+        // Atualiza os indicadores (bolinhas)
+        dots.forEach(function (dot, index) {
+          if (index === currentSlide) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+
+        // Habilita/desabilita botões conforme a posição
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === totalSlides - 1;
+      }
+
+      // Avançar slide
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          updateCarousel();
+        }
+      }
+
+      // Voltar slide
+      function prevSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateCarousel();
+        }
+      }
+
+      // Ir direto para um slide (usado nos dots)
+      function goToSlide(index) {
+        if (index >= 0 && index < totalSlides) {
+          currentSlide = index;
+          updateCarousel();
+        }
+      }
+
+      // Event listeners dos botões
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+
+      // Event listeners dos indicadores
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          const index = parseInt(dot.dataset.slide, 10);
+          goToSlide(index);
+        });
+      });
+
+      // Suporte às setas do teclado (esquerda/direita)
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') nextSlide();
+        else if (e.key === 'ArrowLeft') prevSlide();
+      });
+
+      // Inicializa o carrossel no primeiro slide
+      updateCarousel();
+    })();
+  </script>
+</body>
+</html>
